@@ -12,6 +12,20 @@ workflows:
       branch_patterns:
         - pattern: 'main'
     scripts:
+      - name: Reconstruct Modern Project Skeleton
+        script: |
+          # 1. Move our custom files to a safe temporary home
+          mkdir -p ../temp_source
+          cp lib/main.dart ../temp_source/
+          cp pubspec.yaml ../temp_source/
+          
+          # 2. Clear out the directory and generate a fresh, official Flutter setup
+          rm -rf * .git*
+          flutter create --platforms android --org com.alrazi .
+          
+          # 3. Restore our custom logic and configurations over the template
+          cp ../temp_source/main.dart lib/
+          cp ../temp_source/pubspec.yaml ./
       - name: Get Flutter packages
         script: | 
           flutter packages pub get
