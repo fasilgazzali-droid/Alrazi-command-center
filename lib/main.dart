@@ -370,7 +370,7 @@ class _CommandCenterDashboardState extends State<CommandCenterDashboard> {
           ],
         ),
         const SizedBox(height: 4),
-        LinearProgressIndicator(value: val.clamp(0.0, 1.0), color: col, backgroundColor: Colors.black24, minHeight: 6),
+    LinearProgressIndicator(value: val.clamp(0.0, 1.0), color: col, backgroundColor: Colors.black26, minHeight: 6),
       ],
     );
   }
