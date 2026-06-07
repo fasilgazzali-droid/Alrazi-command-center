@@ -278,7 +278,7 @@ class _CommandCenterDashboardState extends State<CommandCenterDashboard> {
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: currentVoteCast == 'Aye' ? Colors.emerald.withOpacity(0.3) : Colors.grey[900],
-                                    side: BorderSide(color: currentVoteCast == 'Aye' ? Colors.emerald : Colors.transparent),
+                                    side: BorderSide(color: currentVoteCast == 'Aye' ? Colors.green : Colors.transparent),
                                   ),
                                   onPressed: () {
                                     if (!_verifyStamina()) return;
@@ -291,14 +291,14 @@ class _CommandCenterDashboardState extends State<CommandCenterDashboard> {
                                     });
                                     _addLog("VOTED AYE: Coalition metric advanced (+8 IP, +75 CC).");
                                   },
-                                  child: const Text("Vote AYE", style: TextStyle(color: Colors.emeraldAccent)),
+                                  child: const Text("Vote AYE", style: TextStyle(color: Colors.greenAccent)),
                                 ),
                               ),
                               const SizedBox(width: 8),
                               Expanded(
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: currentVoteCast == 'Nay' ? Colors.rose.withOpacity(0.3) : Colors.grey[900],
+                                    backgroundColor: currentVoteCast == 'Nay' ? Colors.red.withOpacity(0.3) : Colors.grey[900],
                                     side: BorderSide(color: currentVoteCast == 'Nay' ? Colors.rose : Colors.transparent),
                                   ),
                                   onPressed: () {
