@@ -388,7 +388,7 @@ class _CommandCenterDashboardState extends State<CommandCenterDashboard> {
           setState(() { selectedIntelView = view; });
           _addLog("Accessing $text Node Layer.");
         },
-        child: Text(text, style: TextStyle(fontSize: 10, color: isSel ? const Color(0xFF00F0FF) : Colors.white60), textAlign: Center),
+        child: Text(text, style: TextStyle(fontSize: 10, color: isSel ? const Color(0xFF00F0FF) : Colors.white60), textAlign: TextAlign.center),
       ),
     );
   }
