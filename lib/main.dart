@@ -152,102 +152,40 @@ class _CommandCenterDashboardState extends State<CommandCenterDashboard> {
           child: Column(
             children: [
               // 1. TOP HEADER & TICKER
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF161B22),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey[800]!),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Lucide.terminal, color: Color(0xFF00F0FF)),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("AL-RAZI PROJECT", style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00F0FF), letterSpacing: 1.5)),
-                          const SizedBox(height: 2),
-                          Text(_tickerNews[_tickerIndex], style: const TextStyle(color: Colors.amber, fontSize: 11), overflow: TextOverflow.ellipsis),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+Container(
+  constraints: const BoxConstraints(minHeight: 110),
+  decoration: BoxDecoration(
+    color: Colors.black45,
+    borderRadius: BorderRadius.circular(8),
+    border: Border.all(color: Colors.grey[900]!),
+  ),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(_getIntelText(), style: const TextStyle(fontFamily: 'Courier', fontSize: 12, color: Colors.white70)),
+      if (selectedIntelView != 'none') ...[
+        const Divider(color: Colors.white10, height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            if (selectedIntelView == 'media')
+              TextButton.icon(
+                onPressed: _triggerAssetFreeze,
+                icon: const Icon(Lucide.gavel, size: 14, color: Colors.redAccent),
+                label: const Text("File Subpoena Order", style: TextStyle(fontSize: 11, color: Colors.redAccent)),
               ),
-              const SizedBox(height: 16),
-
-              // 2. STATS OVERVIEW CARD
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF161B22),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey[800]!),
-                ),
-                child: Column(
-                  children: [
-                    _buildStatBar("Influence (IP)", influencePoints / 100, Colors.emerald, "$influencePoints / 100"),
-                    const SizedBox(height: 12),
-                    _buildStatBar("Capital Credits (CC)", capitalCredits / 1000, Colors.amber, "$capitalCredits CC"),
-                    const SizedBox(height: 12),
-                    _buildStatBar("Executive Stamina", staminaIndex / 100, Colors.rose, "$staminaIndex%"),
-                  ],
-                ),
+            if (selectedIntelView == 'deepstate')
+              TextButton.icon(
+                onPressed: _executeWiretap,
+                icon: const Icon(Lucide.radio, size: 14, color: Color(0xFF00F0FF)),
+                label: const Text("Deploy Deep Wiretap (Costs 200 CC)", style: TextStyle(fontSize: 11, color: Color(0xFF00F0FF))),
               ),
-              const SizedBox(height: 16),
-
-              // 3. ASYMMETRIC INTEL SELECTION MATRIX
-              Expanded(
-                child: ListView(
-                  children: [
-                    const Text("ASYMMETRIC INTEL MATRIX", style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        _intelButton("01 // Bureaucrat", 'bureaucrat'),
-                        const SizedBox(width: 8),
-                        _intelButton("02 // Media", 'media'),
-                        const SizedBox(width: 8),
-                        _intelButton("03 // Deep State", 'deepstate'),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Container(
-                      constraints: const BoxConstraints(minHeight: 110),
-                      decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey[900]!),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(_getIntelText(), style: const TextStyle(fontFamily: 'Courier', fontSize: 12, color: Colors.white70)),
-                          if (selectedIntelView != 'none') ...[
-                            const Divider(color: Colors.white10, height: 16),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                if (selectedIntelView == 'media')
-                                  TextButton.icon(
-                                    onPressed: _triggerAssetFreeze,
-                                   icon: const Icon(Lucide.gavel, size: 14, color: Colors.roseAccent),
-                                    label: Text("File Subpoena Order", style: TextStyle(fontSize: 11, color: Colors.pinkAccent)),
-                                  ),
-                                if (selectedIntelView == 'deepstate')
-                                  TextButton.icon(
-                                    onPressed: _executeWiretap,
-                                    icon: const Icon(Lucide.radio, size: 14, color: Color(0xFF00F0FF)),
-                                    label: const Text("Deploy Deep Wiretap (Costs 200 CC)", style: TextStyle(fontSize: 11, color: Color(0xFF00F0FF))),
-                                  ),
-                              ],
-                            )
-                          ]
-                        ],
-                      ),
-                    ),
+          ],
+        ),
+      ],
+    ],
+  ),
+),
                     const SizedBox(height: 20),
 
                     // 4. PARLIAMENTARY ARENA
