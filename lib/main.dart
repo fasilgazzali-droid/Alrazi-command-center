@@ -215,8 +215,7 @@ class _CommandCenterDashboardState extends State<CommandCenterDashboard> {
                     ),
                     const SizedBox(height: 8),
                     Container(
-                      padding: const EdgeInsets.all(12),
-                      minHeight: 110,
+                      constraints: const BoxConstraints(minHeight: 110),
                       decoration: BoxDecoration(
                         color: Colors.black45,
                         borderRadius: BorderRadius.circular(8),
@@ -234,8 +233,8 @@ class _CommandCenterDashboardState extends State<CommandCenterDashboard> {
                                 if (selectedIntelView == 'media')
                                   TextButton.icon(
                                     onPressed: _triggerAssetFreeze,
-                                    icon: const Icon(Lucide.gavel, size: 14, color: Colors.roseAccent),
-                                    label: const Text("File Subpoena Order", style: TextStyle(fontSize: 11, color: Colors.roseAccent)),
+                                   icon: const Icon(Lucide.gavel, size: 14, color: Colors.roseAccent),
+                                    label: Text("File Subpoena Order", style: TextStyle(fontSize: 11, color: Colors.pinkAccent)),
                                   ),
                                 if (selectedIntelView == 'deepstate')
                                   TextButton.icon(
